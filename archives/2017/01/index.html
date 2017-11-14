@@ -3,22 +3,18 @@
 <head>
     <meta charset="utf-8">
     
-    <title>DotNet Tips - The DebuggerDisplay() attribute | Danny Allegrezza</title>
+    <title>Archive: 2017/1 | Danny Allegrezza</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="Debugging is one of the most crucial skills that a software developer can possess. I want to share a tip I recently learned while watching a great Pluralsight course. When debugging your C# code, woul">
-<meta name="keywords" content="C#,tips">
-<meta property="og:type" content="article">
-<meta property="og:title" content="DotNet Tips - The DebuggerDisplay() attribute">
-<meta property="og:url" content="http://dannyallegrezza.com/2017/10/09/DebuggerDisplay/index.html">
+    <meta name="description" content="My personal Blog">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Danny Allegrezza">
+<meta property="og:url" content="http://dannyallegrezza.com/archives/2017/01/index.html">
 <meta property="og:site_name" content="Danny Allegrezza">
-<meta property="og:description" content="Debugging is one of the most crucial skills that a software developer can possess. I want to share a tip I recently learned while watching a great Pluralsight course. When debugging your C# code, woul">
+<meta property="og:description" content="My personal Blog">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://dannyallegrezza.com/thumbs/debugger.JPG">
-<meta property="og:updated_time" content="2017-11-14T00:32:00.614Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="DotNet Tips - The DebuggerDisplay() attribute">
-<meta name="twitter:description" content="Debugging is one of the most crucial skills that a software developer can possess. I want to share a tip I recently learned while watching a great Pluralsight course. When debugging your C# code, woul">
-<meta name="twitter:image" content="http://dannyallegrezza.com/thumbs/debugger.JPG">
+<meta name="twitter:title" content="Danny Allegrezza">
+<meta name="twitter:description" content="My personal Blog">
     
 
     
@@ -200,180 +196,45 @@
 </aside>
 
             
-            <section id="main"><article id="post-DebuggerDisplay" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
+            <section id="main"><div class="timeline timeline-wrap">
+    
+            <div class="timeline-row timeline-row-major">
+                <span class="node"><i class="fa fa-calendar"></i></span>
+                <h1 class="title">2017</h1>
+            </div>
         
-        
-            <header class="article-header">
+        <div class="timeline-row">
+            <span class="node"></span>
+            <div class="content">
                 
     
-        <h1 class="article-title" itemprop="name">
-            DotNet Tips - The DebuggerDisplay() attribute
+        <h1 itemprop="name">
+            <a class="timeline-article-title" href="/2017/01/01/hello-world/">Hello World</a>
         </h1>
     
 
-                
-                    <div class="article-meta">
-                        
+                <div class="article-meta">
+                    
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2017/10/09/DebuggerDisplay/">
-            <time datetime="2017-10-09T15:01:40.000Z" itemprop="datePublished">2017-10-09</time>
+        <a href="/2017/01/01/hello-world/">
+            <time datetime="2017-01-01T19:58:06.000Z" itemprop="datePublished">2017-01-01</time>
         </a>
     </div>
 
 
-                        
+                    
     <div class="article-category">
     	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Code/">Code</a>
+        <a class="article-category-link" href="/categories/General/">General</a>
     </div>
 
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/C/">C#</a>, <a class="tag-link" href="/tags/tips/">tips</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <p>Debugging is one of the most crucial skills that a software developer can possess. I want to share a tip I recently learned while watching a great <a href="https://app.pluralsight.com/library/courses/csharp-tips-traps/table-of-contents" target="_blank" rel="external">Pluralsight course</a>. When debugging your C# code, wouldn’t it be nice to know some interesting data about the giant collection of objects you are hovering over? </p>
-<p>That is where the <code>DebuggerDisplay()</code> attribute steps in!</p>
-<a id="more"></a>
-<p>To quote the excellent <a href="https://docs.microsoft.com/en-us/dotnet/framework/debug-trace-profile/enhancing-debugging-with-the-debugger-display-attributes" target="_blank" rel="external">MSDN docs</a>:</p>
-<blockquote>
-<p>Debugger display attributes allow the developer of the type, who specifies and best understands the runtime behavior of that type, to also specify what that type will look like when it is displayed in a debugger. </p>
-</blockquote>
-<h2 id="How-to-use-the-DebuggerDisplay-attribute"><a href="#How-to-use-the-DebuggerDisplay-attribute" class="headerlink" title="How to use the DebuggerDisplay() attribute"></a>How to use the <code>DebuggerDisplay()</code> attribute</h2><p>Let’s assume we have a simple <code>Person</code> class who is not using the DebuggerDisplay functionality.</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">PersonWithoutDebuggerDisplay</span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">string</span> Name &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">int</span> AgeInYears &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">PersonWithoutDebuggerDisplay</span>(<span class="params"><span class="keyword">string</span> name, <span class="keyword">int</span> years</span>)</span></div><div class="line"><span class="function">    </span>&#123;</div><div class="line">        Name = name;</div><div class="line">        AgeInYears = years;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ol>
-<li>Add using statement for <code>System.Diagnostics</code>.</li>
-<li>Decorate your class or property with the <code>[DebuggerDisplay(&quot;&quot;)]</code> attribute. Inside the quotation marks you can write your own custom message which will override the default message, which simply displays either your types information or the <code>ToString()</code> override if one is present.</li>
-</ol>
-<p>For example: </p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">[<span class="meta">DebuggerDisplay(<span class="meta-string">"This person is named &#123;Name&#125; and is &#123;AgeInYears&#125; old"</span>)</span>]</div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">PersonWithoutDebuggerDisplay</span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">string</span> Name &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">int</span> AgeInYears &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">PersonWithoutDebuggerDisplay</span>(<span class="params"><span class="keyword">string</span> name, <span class="keyword">int</span> years</span>)</span></div><div class="line"><span class="function">    </span>&#123;</div><div class="line">        Name = name;</div><div class="line">        AgeInYears = years;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<img src="/2017/10/09/DebuggerDisplay/debugger.JPG" alt="Notice the fancy message, nice!" title="Notice the fancy message, nice!">
-<p>To me, this could definitely help save me some extra clicks and would be helpful when working with a large collection of complex data.</p>
-<h3 id="Considerations"><a href="#Considerations" class="headerlink" title="Considerations"></a>Considerations</h3><ul>
-<li>There will be overhead for this operation</li>
-<li>If we name our properties well, we shouldn’t need to use this</li>
-</ul>
-<p>What are your thoughts on the <code>DebuggerDisplayAttribute</code>? </p>
-
-        
+                    
+                </div>
+            </div>
         </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
+    
 </div>
-
-    <a data-url="http://dannyallegrezza.com/2017/10/09/DebuggerDisplay/" data-id="cj9yw023y0000lkv24l93gpxn" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-        <a href="http://dannyallegrezza.com/2017/10/09/DebuggerDisplay/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://dannyallegrezza.com/2017/10/09/DebuggerDisplay/">Comments</a>
-    
-
-        </footer>
-    </div>
-    
-        
-<nav id="article-nav">
-    
-    
-        <a href="/2017/04/16/Github/" id="article-nav-older" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">Older</strong>
-            <div class="article-nav-title">Intro to Git/Github</div>
-        </a>
-    
-</nav>
-
-
-    
-</article>
-
-
-    
-    
-        <section id="comments">
-    <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    </div>
-</section>
-    
-
 </section>
             
                 
@@ -502,13 +363,11 @@
     <script>
     var disqus_config = function () {
         
-            this.page.url = 'http://dannyallegrezza.com/2017/10/09/DebuggerDisplay/';
-        
-        this.page.identifier = 'DebuggerDisplay';
+        this.page.identifier = '';
     };
     (function() { 
         var d = document, s = d.createElement('script');  
-        s.src = '//' + 'dannyallegrezza' + '.disqus.com/embed.js';
+        s.src = '//' + 'dannyallegrezza' + '.disqus.com/count.js';
         s.setAttribute('data-timestamp', +new Date());
         (d.head || d.body).appendChild(s);
     })();

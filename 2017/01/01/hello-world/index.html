@@ -3,22 +3,21 @@
 <head>
     <meta charset="utf-8">
     
-    <title>DotNet Tips - The DebuggerDisplay() attribute | Danny Allegrezza</title>
+    <title>Hello World | Danny Allegrezza</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="Debugging is one of the most crucial skills that a software developer can possess. I want to share a tip I recently learned while watching a great Pluralsight course. When debugging your C# code, woul">
-<meta name="keywords" content="C#,tips">
+    <meta name="description" content="Hello world. Welcome to my personal space on the Internet. My name is Danny Allegrezza and I am a software engineer living in Cary, North Carolina. I’ll be using this space to blog about cars, code, c">
 <meta property="og:type" content="article">
-<meta property="og:title" content="DotNet Tips - The DebuggerDisplay() attribute">
-<meta property="og:url" content="http://dannyallegrezza.com/2017/10/09/DebuggerDisplay/index.html">
+<meta property="og:title" content="Hello World">
+<meta property="og:url" content="http://dannyallegrezza.com/2017/01/01/hello-world/index.html">
 <meta property="og:site_name" content="Danny Allegrezza">
-<meta property="og:description" content="Debugging is one of the most crucial skills that a software developer can possess. I want to share a tip I recently learned while watching a great Pluralsight course. When debugging your C# code, woul">
+<meta property="og:description" content="Hello world. Welcome to my personal space on the Internet. My name is Danny Allegrezza and I am a software engineer living in Cary, North Carolina. I’ll be using this space to blog about cars, code, c">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://dannyallegrezza.com/thumbs/debugger.JPG">
-<meta property="og:updated_time" content="2017-11-14T00:32:00.614Z">
+<meta property="og:image" content="http://dannyallegrezza.com/thumbs/code.png">
+<meta property="og:updated_time" content="2017-11-14T00:32:00.629Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="DotNet Tips - The DebuggerDisplay() attribute">
-<meta name="twitter:description" content="Debugging is one of the most crucial skills that a software developer can possess. I want to share a tip I recently learned while watching a great Pluralsight course. When debugging your C# code, woul">
-<meta name="twitter:image" content="http://dannyallegrezza.com/thumbs/debugger.JPG">
+<meta name="twitter:title" content="Hello World">
+<meta name="twitter:description" content="Hello world. Welcome to my personal space on the Internet. My name is Danny Allegrezza and I am a software engineer living in Cary, North Carolina. I’ll be using this space to blog about cars, code, c">
+<meta name="twitter:image" content="http://dannyallegrezza.com/thumbs/code.png">
     
 
     
@@ -200,7 +199,7 @@
 </aside>
 
             
-            <section id="main"><article id="post-DebuggerDisplay" class="article article-type-post" itemscope itemprop="blogPost">
+            <section id="main"><article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -208,7 +207,7 @@
                 
     
         <h1 class="article-title" itemprop="name">
-            DotNet Tips - The DebuggerDisplay() attribute
+            Hello World
         </h1>
     
 
@@ -217,8 +216,8 @@
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2017/10/09/DebuggerDisplay/">
-            <time datetime="2017-10-09T15:01:40.000Z" itemprop="datePublished">2017-10-09</time>
+        <a href="/2017/01/01/hello-world/">
+            <time datetime="2017-01-01T19:58:06.000Z" itemprop="datePublished">2017-01-01</time>
         </a>
     </div>
 
@@ -226,15 +225,10 @@
                         
     <div class="article-category">
     	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Code/">Code</a>
+        <a class="article-category-link" href="/categories/General/">General</a>
     </div>
 
                         
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/C/">C#</a>, <a class="tag-link" href="/tags/tips/">tips</a>
-    </div>
-
                     </div>
                 
             </header>
@@ -243,28 +237,8 @@
         <div class="article-entry" itemprop="articleBody">
         
             
-            <p>Debugging is one of the most crucial skills that a software developer can possess. I want to share a tip I recently learned while watching a great <a href="https://app.pluralsight.com/library/courses/csharp-tips-traps/table-of-contents" target="_blank" rel="external">Pluralsight course</a>. When debugging your C# code, wouldn’t it be nice to know some interesting data about the giant collection of objects you are hovering over? </p>
-<p>That is where the <code>DebuggerDisplay()</code> attribute steps in!</p>
-<a id="more"></a>
-<p>To quote the excellent <a href="https://docs.microsoft.com/en-us/dotnet/framework/debug-trace-profile/enhancing-debugging-with-the-debugger-display-attributes" target="_blank" rel="external">MSDN docs</a>:</p>
-<blockquote>
-<p>Debugger display attributes allow the developer of the type, who specifies and best understands the runtime behavior of that type, to also specify what that type will look like when it is displayed in a debugger. </p>
-</blockquote>
-<h2 id="How-to-use-the-DebuggerDisplay-attribute"><a href="#How-to-use-the-DebuggerDisplay-attribute" class="headerlink" title="How to use the DebuggerDisplay() attribute"></a>How to use the <code>DebuggerDisplay()</code> attribute</h2><p>Let’s assume we have a simple <code>Person</code> class who is not using the DebuggerDisplay functionality.</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">PersonWithoutDebuggerDisplay</span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">string</span> Name &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">int</span> AgeInYears &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">PersonWithoutDebuggerDisplay</span>(<span class="params"><span class="keyword">string</span> name, <span class="keyword">int</span> years</span>)</span></div><div class="line"><span class="function">    </span>&#123;</div><div class="line">        Name = name;</div><div class="line">        AgeInYears = years;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ol>
-<li>Add using statement for <code>System.Diagnostics</code>.</li>
-<li>Decorate your class or property with the <code>[DebuggerDisplay(&quot;&quot;)]</code> attribute. Inside the quotation marks you can write your own custom message which will override the default message, which simply displays either your types information or the <code>ToString()</code> override if one is present.</li>
-</ol>
-<p>For example: </p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">[<span class="meta">DebuggerDisplay(<span class="meta-string">"This person is named &#123;Name&#125; and is &#123;AgeInYears&#125; old"</span>)</span>]</div><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">PersonWithoutDebuggerDisplay</span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">string</span> Name &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">int</span> AgeInYears &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">PersonWithoutDebuggerDisplay</span>(<span class="params"><span class="keyword">string</span> name, <span class="keyword">int</span> years</span>)</span></div><div class="line"><span class="function">    </span>&#123;</div><div class="line">        Name = name;</div><div class="line">        AgeInYears = years;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<img src="/2017/10/09/DebuggerDisplay/debugger.JPG" alt="Notice the fancy message, nice!" title="Notice the fancy message, nice!">
-<p>To me, this could definitely help save me some extra clicks and would be helpful when working with a large collection of complex data.</p>
-<h3 id="Considerations"><a href="#Considerations" class="headerlink" title="Considerations"></a>Considerations</h3><ul>
-<li>There will be overhead for this operation</li>
-<li>If we name our properties well, we shouldn’t need to use this</li>
-</ul>
-<p>What are your thoughts on the <code>DebuggerDisplayAttribute</code>? </p>
+            <p>Hello world. Welcome to my personal space on the Internet. My name is Danny Allegrezza and I am a software engineer living in Cary, North Carolina. I’ll be using this space to blog about cars, code, cats, and occasionally my personal life. </p>
+<p>This is a new iteration of my website, so I’ll be slowly back-filling in this blog with back-dated posts.</p>
 
         
         </div>
@@ -275,7 +249,7 @@
 
 </div>
 
-    <a data-url="http://dannyallegrezza.com/2017/10/09/DebuggerDisplay/" data-id="cj9yw023y0000lkv24l93gpxn" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://dannyallegrezza.com/2017/01/01/hello-world/" data-id="cj9yw025d0009lkv2rhpbel3o" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -343,7 +317,7 @@
 
             
     
-        <a href="http://dannyallegrezza.com/2017/10/09/DebuggerDisplay/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://dannyallegrezza.com/2017/10/09/DebuggerDisplay/">Comments</a>
+        <a href="http://dannyallegrezza.com/2017/01/01/hello-world/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://dannyallegrezza.com/2017/01/01/hello-world/">Comments</a>
     
 
         </footer>
@@ -352,11 +326,15 @@
         
 <nav id="article-nav">
     
-    
-        <a href="/2017/04/16/Github/" id="article-nav-older" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">Older</strong>
-            <div class="article-nav-title">Intro to Git/Github</div>
+        <a href="/2017/04/16/Github/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    Intro to Git/Github
+                
+            </div>
         </a>
+    
     
 </nav>
 
@@ -502,9 +480,9 @@
     <script>
     var disqus_config = function () {
         
-            this.page.url = 'http://dannyallegrezza.com/2017/10/09/DebuggerDisplay/';
+            this.page.url = 'http://dannyallegrezza.com/2017/01/01/hello-world/';
         
-        this.page.identifier = 'DebuggerDisplay';
+        this.page.identifier = 'hello-world';
     };
     (function() { 
         var d = document, s = d.createElement('script');  
